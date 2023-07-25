@@ -1,3 +1,4 @@
+@charset "UTF-8";
 *,
 *::after,
 *::before {
@@ -121,7 +122,7 @@ button {
   top: -20px;
 }
 .app__winner .title,
-.app__winner .app-promocode {
+.app__winner .app-promocode-text {
   max-width: -webkit-max-content;
   max-width: -moz-max-content;
   max-width: max-content;
@@ -130,14 +131,62 @@ button {
   background: linear-gradient(180deg, #126AAF 0%, #009AD9 48.96%, #003F91 98.96%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 80px;
+}
+.app__winner .title {
+  padding: 10px 0px 0px;
+}
+.app__winner .suptitle {
+  padding: 50px 0px 10px;
 }
 .app__winner .app-promocode {
+  background: #fff;
+  border-radius: 6px;
+  padding: 10px 20px 10px 40px;
+  position: relative;
+  z-index: 2;
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  margin: 0px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 16px;
+}
+.app__winner .app-promocode__copied::before {
+  content: "Скопировано";
+  font-size: 12px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  padding: 6px 12px;
+  position: absolute;
+  bottom: 0;
+  right: 0px;
+  -webkit-transform: translate(0, calc(100% + 4px));
+          transform: translate(0, calc(100% + 4px));
+}
+.app__winner .app-promocode::after {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url("https://www.okeydostavka.ru/wcsstore/OKMarketSAS/share/promo_pages/copy.png");
+  background-size: cover;
+}
+.app__winner .app-promocode-text {
   font-family: GothamCond, sans-serif;
   font-weight: 700;
   position: relative;
   z-index: 2;
-  margin: 30px auto;
+  margin: 0;
+  pointer-events: none;
 }
 .app__winner .app-desc {
   position: absolute;
@@ -158,6 +207,75 @@ button {
   text-transform: none !important;
   font-size: 19px !important;
   line-height: 30px !important;
+}
+.app__android .app-body {
+  padding: 50px 0px 60px;
+}
+.app__android .app-body .suptitle {
+  font-family: Roboto, sans-serif;
+  font-size: 48px;
+  line-height: 50px;
+}
+.app__android .app-body .title {
+  font-family: Roboto, sans-serif;
+  font-size: 32px;
+  line-height: 1.1;
+}
+.app__android .app-img {
+  top: -30px;
+}
+.app__android.app__start {
+  padding: 150px 10px;
+}
+.app__android.app__start .app-logo {
+  left: 40%;
+}
+.app__android.app__looser .app-body .title,
+.app__android.app__looser .app-body .suptitle {
+  font-size: 30px !important;
+}
+.app__android.app__looser .app-body .suptitle {
+  padding-bottom: 50px;
+}
+.app__android.app__winner .app-body {
+  padding: 280px 40px 0px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  height: auto;
+}
+.app__android.app__winner .app-logo {
+  top: -20px;
+}
+.app__android.app__winner .title,
+.app__android.app__winner .app-promocode-text {
+  font-size: 30px !important;
+}
+.app__android.app__winner .title {
+  margin-top: -20px;
+  padding: 0px 0px 0px;
+}
+.app__android.app__winner .suptitle {
+  padding: 60px 0px 20px;
+  font-size: 18px !important;
+  line-height: 1.2 !important;
+}
+.app__android.app__winner .app-promocode-text {
+  font-family: Roboto, sans-serif;
+}
+.app__android.app__winner .app-desc {
+  position: absolute;
+  z-index: 2;
+  color: #fff;
+  bottom: 6px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  font-size: 12px;
+  line-height: 1;
+  text-align: center;
+  width: 100%;
+  margin: 0px auto;
 }
 .app-logo {
   position: absolute;

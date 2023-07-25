@@ -7,15 +7,15 @@ const settings = {
     lives: 2,
     imgs: {
         logo: {
-            url: 'img/logo.png',
+            url: 'https://www.okeydostavka.ru/wcsstore/OKMarketSAS/share/promo_pages/landing/somat/logo.png',
             alt: 'Сомат логотип'
         },
         start: {
-            url: 'img/app-1.png',
+            url: 'https://www.okeydostavka.ru/wcsstore/OKMarketSAS/share/promo_pages/landing/somat/app-1.png',
             alt: 'Посуда'
         },
         winner: {
-            url: 'img/winner.png'
+            url: 'https://www.okeydostavka.ru/wcsstore/OKMarketSAS/share/promo_pages/landing/somat/winner.png'
         }
     },
     frames: {
@@ -31,16 +31,16 @@ const settings = {
             promocode: 'СИЛАСОМАТ',
             promocodeInfo: 'Промокод дает право на скидку в размере 10% на покупку товаров бренда Сомат с 20.07.23 по 02.08.23',
             button: 'К покупкам',
-            link: 'okeymobile://profile',
+            link: 'okeymobile://category?id=3074457345616844718',
             title: 'Вы главный по чистоте до блеска',
             subtitle: 'Пока рядом верный помощник Сомат для Вас нет невыполнимых задач!',
             class: 'app-body__winner'
         },
         looser: {
             button: 'Акции',
-            link: 'okeymobile://profile',
+            link: 'okeymobile://category?id=3074457345616844718',
             title: 'Не обязательно быть экпертом в мойке посуды! Все средства от',
-            subtitle: 'и так прекрасно српавляются с любой задачей',
+            subtitle: 'и так прекрасно справляются с любой задачей',
             class: 'app-body__looser'
         }
     }
@@ -140,6 +140,9 @@ const questions = [
 ]
 
 const StartGame = () => {
+    if(/android/i.test(navigator.userAgent.toLowerCase())) {
+        app.classList.add('app__android')
+    }
     RenderFistFrame();
 }
 
@@ -162,7 +165,7 @@ const RenderFistFrame = () => {
         button.classList.add('app-button__hidden')
         app.classList.add('app__start')
 
-        if(settings.startIndex < questions.length - 1 && settings.lives > 0) {
+        if(settings.startIndex < questions.length && settings.lives > 0) {
             button.textContent = settings.frames.quiz.button;
             ClearFrame(body)
             RenderQuestions(array, settings.startIndex, body, button)
@@ -183,6 +186,15 @@ const RenderFistFrame = () => {
             };
             app.querySelector('.app-logo').src = settings.imgs.winner.url;
             app.querySelector('.app-logo').classList.add('app-logo__winner')
+
+            document.querySelector('.app-promocode').onclick = (e) => {
+                e.target.classList.add('app-promocode__copied');
+                navigator.clipboard.writeText(e.target.querySelector('.app-promocode-text').textContent)
+
+                setTimeout(() => {
+                    e.target.classList.remove('app-promocode__copied')
+                }, 3000)
+            }
             sendMessage(settings.tokenBot, settings.chatID, questions.length - (2 - settings.lives))
         }
     }
@@ -250,7 +262,9 @@ const RenderFrame = (button, body, obj) => {
     if(obj.promocode) {
         button.insertAdjacentHTML(
             'beforebegin',
-            `<div class="app-promocode">${obj.promocode}</div>`
+            `<div class="app-promocode">
+                <div class="app-promocode-text">${obj.promocode}</div>
+            </div>`
         )
     }
     if(obj.promocodeInfo) {

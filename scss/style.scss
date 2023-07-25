@@ -127,21 +127,78 @@ button {
             top: -20px;
         }
         .title,
-        .app-promocode {
+        .app-promocode-text {
             max-width: max-content;
             font-size: 40px !important;
             background: linear-gradient(180deg, #126AAF 0%, #009AD9 48.96%, #003F91 98.96%);;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 80px;
+        }
+        .title {
+            padding: 10px 0px 0px;
+        }
+        .suptitle {
+            padding: 50px 0px 10px;
         }
 
         .app-promocode {
-            font-family: GothamCond, sans-serif;
-            font-weight: 700;
+            background: #fff;
+            border-radius: 6px;
+            padding: 10px 20px 10px 40px;
             position: relative;
             z-index: 2;
-            margin: 30px auto;
+            max-width: max-content;
+            margin: 0px auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+
+            &__copied {
+
+
+                &::before {
+                    content: 'Скопировано';
+                    font-size: 12px;
+                    color: #fff;
+                    background: rgba($color: #000000, $alpha: 0.3);
+                    border-radius: 4px;
+                    padding: 6px 12px;
+                    position: absolute;
+                    bottom: 0;
+                    right: 0px;
+                    transform: translate(0, calc(100% + 4px));
+                }
+            }
+
+            &::after {
+                content: '';
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                background: url('https://www.okeydostavka.ru/wcsstore/OKMarketSAS/share/promo_pages/copy.png');
+                background-size: cover;
+            }
+
+            &-text {
+                font-family: GothamCond, sans-serif;
+                font-weight: 700;
+                position: relative;
+                z-index: 2;
+                margin: 0;
+                pointer-events: none;
+            }
+
+            // &::after {
+            //     content: 'Примените промокод в корзине';
+            //     position: absolute;
+            //     bottom: 0;
+            //     left: 0;
+            //     font-size: 12px;
+            //     color: #fff;
+            //     text-align: center;
+            //     transform: translate(0, 100%);
+            // }
         }
 
         .app-desc {
@@ -163,6 +220,100 @@ button {
             text-transform: none !important;
             font-size: 19px !important;
             line-height: 30px !important;
+        }
+    }
+
+    &__android {
+        .app {
+            &-body {
+                padding: 50px 0px 60px;
+                .suptitle {
+                    font-family: Roboto, sans-serif;
+                    font-size: 48px;
+                    line-height: 50px;
+                }
+        
+                .title {
+                    font-family: Roboto, sans-serif;
+                    font-size: 32px;
+                    line-height: 1.1;
+                }
+            }
+
+            &-img {
+                top: -30px;
+            }
+        }
+
+        &.app {
+            &__start {
+                padding: 150px 10px;
+
+                .app {
+                    &-logo {
+                        left: 40%;
+                    }
+                }
+            }
+
+            &__looser {
+                .app-body {
+                    .title,
+                    .suptitle {
+                        font-size: 30px !important;
+                    }
+            
+                    .suptitle {
+                        padding-bottom: 50px;
+                    }
+                }
+            }
+
+            &__winner {
+                .app-body {
+                    padding: 280px 40px 0px;
+                    justify-content: start;
+                    height: auto;
+                }
+                .app-logo {
+                    top: -20px;
+                }
+                .title,
+                .app-promocode-text {
+                    font-size: 30px !important;
+                }
+
+                .title {
+                    margin-top: -20px;
+                    padding: 0px 0px 0px;
+                }
+                .suptitle {
+                    padding: 60px 0px 20px;
+                    font-size: 18px !important;
+                    line-height: 1.2 !important;
+                }
+        
+                .app-promocode {
+                    
+                    &-text {
+                        font-family: Roboto, sans-serif;
+                    }
+                }
+        
+                .app-desc {
+                    position: absolute;
+                    z-index: 2;
+                    color: #fff;
+                    bottom: 6px;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                    font-size: 12px;
+                    line-height: 1;
+                    text-align: center;
+                    width: 100%;
+                    margin: 0px auto;
+                }
+            }
         }
     }
 
